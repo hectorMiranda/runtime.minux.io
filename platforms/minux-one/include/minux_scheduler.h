@@ -2,18 +2,19 @@
 #define MINUX_SCHEDULER_H
 
 #include <Arduino.h>
+#include "minux_config.h"
 #include "minux_kernel.h"
 
 // Process control block
 struct ProcessControlBlock {
-  char name[8];     // Reduced from 16
+  char name[MAX_PROCESS_NAME];
   void (*function)();
   unsigned long interval;
   unsigned long lastRun;
   bool active;
   uint8_t priority;
   ProcessState state;
-};;
+};
 
 class MinuxScheduler {
 private:

@@ -25,6 +25,7 @@
 
 // System Limits
 #define MAX_PROCESSES       8
+#define MAX_PROCESS_NAME    16
 #define MAX_FILES           16
 #define MAX_FILENAME        12
 #define MAX_FILESIZE        256

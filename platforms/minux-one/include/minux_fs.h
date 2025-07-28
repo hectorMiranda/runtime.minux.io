@@ -2,12 +2,9 @@
 #define MINUX_FS_H
 
 #include <Arduino.h>
+#include "minux_config.h"
 
 // Simple in-memory filesystem
-#define MAX_FILES 2     // Further reduced
-#define MAX_FILENAME 8  
-#define MAX_FILESIZE 32 // Further reduced
-
 struct FileEntry {
   char name[MAX_FILENAME];
   uint8_t data[MAX_FILESIZE];

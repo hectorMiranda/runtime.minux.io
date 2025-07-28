@@ -2,8 +2,12 @@
 #define MINUX_SHELL_H
 
 #include <Arduino.h>
+#include "minux_config.h"
 
-#define MAX_CMD_LENGTH 16  // Reduced from 32
+// Forward declarations
+class MinuxDisplay;
+class MinuxFS;
+
 #define MAX_ARGS 2         // Reduced from 4
 
 class MinuxShell {

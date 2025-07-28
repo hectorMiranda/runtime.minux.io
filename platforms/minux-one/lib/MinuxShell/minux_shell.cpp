@@ -3,6 +3,11 @@
 #include "minux_display.h"
 #include "minux_fs.h"
 
+// External references
+extern MinuxDisplay ui;
+extern MinuxFS filesystem;
+extern MinuxScheduler scheduler;
+
 MinuxShell::MinuxShell() {
   bufferIndex = 0;
   shellActive = false;
@@ -170,7 +175,7 @@ void MinuxShell::cmd_version() {
 void MinuxShell::cmd_cat(const char* filename) {
   FileEntry* file = filesystem.openFile(filename);
   if (file) {
-    for (int i = 0; i < file->size; i++) {
+    for (uint16_t i = 0; i < file->size; i++) {
       ui.printChar((char)file->data[i]);
     }
     ui.printChar('\n');

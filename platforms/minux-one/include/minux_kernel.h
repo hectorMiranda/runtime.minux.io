@@ -2,14 +2,13 @@
 #define MINUX_KERNEL_H
 
 #include <Arduino.h>
+#include "minux_config.h"
 
 // Forward declarations
 class MinuxScheduler;
 class ProcessControlBlock;
 
 // System constants
-#define MAX_PROCESSES 4     // Reduced from 8
-#define MAX_PROCESS_NAME 8  // Reduced from 16
 #define KERNEL_VERSION "0.1.0"
 
 // System states
@@ -61,5 +60,7 @@ void idle_task();
 void ui_task();
 void input_task();
 void fs_task();
+
+extern MinuxKernel kernel;
 
 #endif
