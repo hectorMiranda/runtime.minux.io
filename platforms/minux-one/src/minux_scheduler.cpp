@@ -18,14 +18,13 @@ bool MinuxScheduler::startProcess(const char* name, void (*func)(), unsigned lon
   if (processCount >= MAX_PROCESSES) return false;
   
   ProcessControlBlock* pcb = &processes[processCount];
-  strncpy(pcb->name, name, 15);
-  pcb->name[15] = '\0';
+  strncpy(pcb->name, name, 7);
+  pcb->name[7] = '\0';
   pcb->function = func;
   pcb->interval = interval;
   pcb->lastRun = 0;
   pcb->active = true;
   pcb->priority = priority;
-  pcb->stackSize = 256; // Estimated
   pcb->state = PROC_READY;
   
   processCount++;

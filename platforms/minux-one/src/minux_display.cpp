@@ -278,8 +278,8 @@ void MinuxDisplay::showProcessList() {
 }
 
 void MinuxDisplay::updateStatusBar(const char* text) {
-  strncpy(statusBar, text, 20);
-  statusBar[20] = '\0';
+  strncpy(statusBar, text, 16);
+  statusBar[16] = '\0';
 }
 
 void MinuxDisplay::drawIcon(uint8_t x, uint8_t y, uint8_t icon) {

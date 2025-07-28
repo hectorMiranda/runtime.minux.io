@@ -97,31 +97,21 @@ FileEntry* MinuxFS::getFile(uint8_t index) {
 }
 
 void MinuxFS::createSystemFiles() {
-  // Create system directories
-  createDir("bin");
-  createDir("etc");
-  createDir("var");
-  createDir("tmp");
-  
-  // Create system files
-  const char* motd = "Welcome to Minux RTOS!\nA minimal operating system for Arduino.\n";
-  createFile("etc/motd", (const uint8_t*)motd, strlen(motd));
-  
-  const char* version = "Minux RTOS v0.1.0\nKernel: 0.1.0\nBuild: " __DATE__ " " __TIME__ "\n";
-  createFile("etc/version", (const uint8_t*)version, strlen(version));
+  // Create minimal system files
+  const char* version = "Minux v0.1";
+  createFile("version", (const uint8_t*)version, strlen(version));
   
   updateSystemInfo();
 }
 
 void MinuxFS::updateSystemInfo() {
-  char sysinfo[128];
-  sprintf(sysinfo, "Uptime: %lu ms\nFree Memory: %d bytes\nProcesses: %d\n", 
-          millis(), 1024, scheduler.getProcessCount());
+  char sysinfo[32];
+  sprintf(sysinfo, "Up:%lus Mem:%db", millis()/1000, 1024);
   
   // Update or create system info file
-  if (openFile("var/sysinfo")) {
-    writeFile("var/sysinfo", (const uint8_t*)sysinfo, strlen(sysinfo));
+  if (openFile("sysinfo")) {
+    writeFile("sysinfo", (const uint8_t*)sysinfo, strlen(sysinfo));
   } else {
-    createFile("var/sysinfo", (const uint8_t*)sysinfo, strlen(sysinfo));
+    createFile("sysinfo", (const uint8_t*)sysinfo, strlen(sysinfo));
   }
 }

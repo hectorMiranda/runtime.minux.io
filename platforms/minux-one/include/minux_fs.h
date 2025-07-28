@@ -4,9 +4,9 @@
 #include <Arduino.h>
 
 // Simple in-memory filesystem
-#define MAX_FILES 4     // Reduced from 16
-#define MAX_FILENAME 8  // Reduced from 12
-#define MAX_FILESIZE 64 // Reduced from 256
+#define MAX_FILES 2     // Further reduced
+#define MAX_FILENAME 8  
+#define MAX_FILESIZE 32 // Further reduced
 
 struct FileEntry {
   char name[MAX_FILENAME];

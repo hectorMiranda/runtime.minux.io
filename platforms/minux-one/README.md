@@ -90,7 +90,7 @@ D9          → Buzzer +
 ### Building and Uploading
 ```bash
 # Clone the repository
-git clone <repository-url>
+gh repo clone hectorMiranda/runtime.minux.io
 cd platforms/minux-one
 
 # Build and upload
